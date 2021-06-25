@@ -20,13 +20,15 @@ driver = webdriver.Firefox(options=options, executable_path="geckodriver.exe")
 
 
 def get_suits_page(web_driver: selenium.webdriver, size, color):
-    web_driver.get("https://outlet-us.suitsupply.com/en_US/home")
-    form = web_driver.find_element_by_id("dwfrm_clearancelanding_code")
-    form.send_keys("2020")
-    button = web_driver.find_element_by_id("sendBtn")
-    button.click()
+    web_driver.get("https://suitsupply.com/en-us/men/suits")
+    #form = web_driver.find_element_by_id("dwfrm_clearancelanding_code")
+    #form.send_keys("2020")
+    #button = web_driver.find_element_by_id("sendBtn")
+    #button.click()
     web_driver.get(
-        f"https://outlet-us.suitsupply.com/en_US/c_suits?prefn1=colorID&prefv1={color}&prefn2=size&prefv2={size}")
+        #f"https://outlet-us.suitsupply.com/en_US/c_suits?prefn1=colorID&prefv1={color}&prefn2=size&prefv2={size}")
+        f"https://suitsupply.com/en-us/men/suits?prefn1=colorID&prefv1={color}&prefn2=size&prefv2={size}")
+    print(f"https://suitsupply.com/en-us/men/suits?prefn1=colorID&prefv1={color}&prefn2=size&prefv2={size}")
 
 
 def scroll_to_end(web_driver: selenium.webdriver, scroll_pause_time=2):
@@ -100,11 +102,12 @@ def update_json(file_name, product_list):
 
 
 def notify_through_ITT(message, key, event="product_list_updated"):
-    if event is "":
+    if event == None:
         event = "product_list_updated"
     print("Notifying a new deal...")
     report = {}
     report["value1"] = message
+    print(f"https://maker.ifttt.com/trigger/{event}/with/key/{key}")
     print(requests.post(f"https://maker.ifttt.com/trigger/{event}/with/key/{key}",
                         data=report).content)
 
@@ -112,6 +115,9 @@ def notify_through_ITT(message, key, event="product_list_updated"):
 def find_suit_deals(filter, color, size, event, IFTTT_key):
     start_time = time.time()
     item_in_stock = []
+    get_suits_page(driver, size, color)                 # 
+    scroll_to_end(driver)                               # Comment these lines if you want to see all matches at first run, not just check for new matches while running. 
+    item_in_stock = list(in_stock(driver, filter))      #
     while True:
         product_count = len(item_in_stock)
         get_suits_page(driver, size, color)
@@ -121,9 +127,10 @@ def find_suit_deals(filter, color, size, event, IFTTT_key):
         if current_product_count > product_count:
             print("Found a new item!")
             for product in item_in_stock:
+                print(product.identity)
                 notify_through_ITT(product.identity, IFTTT_key, event, )
         print("Searching...")
-        time.sleep(3600 - ((time.time() - start_time) % 3600))
+        time.sleep(60) #wait one minute
 
 
 def parse_args():
@@ -132,11 +139,11 @@ def parse_args():
     parser.add_argument('key',
                                     help="Webhook key that can be found under the IFTTT Webhook documentation page.")
     parser.add_argument('filter',
-                        help="The words you want to filter for. Example: 'Dark Grey Sienna'")
+                        help="The words you want to filter for. Example: 'Dark Grey Sienna '")
     parser.add_argument('color',
                         help="The color of the item you are searching for. Example: 'Grey'")
     parser.add_argument('size',
-                        help="The size of the item you're trying to find. Example: 38")
+                        help="The size of the item you're trying to find. Example: 38S")
     parser.add_argument('--event',
                         help="Event webhook name, defaults to 'product_list_updated'")
     parser.add_argument('--install', type=bool,
