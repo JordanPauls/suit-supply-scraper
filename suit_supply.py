@@ -129,6 +129,8 @@ def find_suit_deals(filter, color, size, event, IFTTT_key):
             for product in item_in_stock:
                 print(product.identity)
                 notify_through_ITT(product.identity, IFTTT_key, event, )
+        print(item_in_stock)
+        notify_through_ITT(current_product_count, IFTTT_key, event)
         print("Searching...")
         time.sleep(60) #wait one minute
 

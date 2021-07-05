@@ -542,3 +542,48 @@ JavaScript error: https://cdn.suitsupply.com/apps/webstore/207687-Smdd2a0J1U/js/
 (error: https://cdn.suitsupply.com/apps/webstore/207687-Smdd2a0J1U/searchPage.chunk.js)
 JavaScript error: https://cdn.suitsupply.com/apps/webstore/207687-Smdd2a0J1U/js/search.js, line 1: ChunkLoadError: Loading chunk 54 failed.
 (error: https://cdn.suitsupply.com/apps/webstore/207687-Smdd2a0J1U/video.chunk.js)
+1625490803578	geckodriver	INFO	Listening on 127.0.0.1:50247
+1625490811133	geckodriver	INFO	Listening on 127.0.0.1:50252
+1625490872747	geckodriver	INFO	Listening on 127.0.0.1:50262
+1625490913900	geckodriver	INFO	Listening on 127.0.0.1:50332
+1625491008226	geckodriver	INFO	Listening on 127.0.0.1:62923
+1625491087157	geckodriver	INFO	Listening on 127.0.0.1:59605
+1625491094047	geckodriver	INFO	Listening on 127.0.0.1:59615
+1625491110477	geckodriver	INFO	Listening on 127.0.0.1:59624
+1625491127826	geckodriver	INFO	Listening on 127.0.0.1:56241
+1625491347984	geckodriver	INFO	Listening on 127.0.0.1:52073
+1625491351021	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\jpaul\\AppData\\Local\\Temp\\rust_mozprofile3hrgW1"
+*** You are running in headless mode.
+1625491353065	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\jpaul\\AppData\\Local\\Temp\\rust_mozprofile3hrgW1\\search.json.mozlz4", (void 0)))
+1625491354428	Marionette	INFO	Listening on port 52082
+1625491354840	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\jpaul\\AppData\\Local\\Temp\\rust_mozprofileE0CvjC"
+*** You are running in headless mode.
+1625491364784	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\jpaul\\AppData\\Local\\Temp\\rust_mozprofileE0CvjC\\search.json.mozlz4", (void 0)))
+1625491366039	Marionette	INFO	Listening on port 52138
+1625491366495	Marionette	WARN	TLS certificate errors will be ignored for this session
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\jpaul\\AppData\\Local\\Temp\\rust_mozprofileVMTiyk"
+*** You are running in headless mode.
+1625491418552	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\jpaul\\AppData\\Local\\Temp\\rust_mozprofileVMTiyk\\search.json.mozlz4", (void 0)))
+1625491419858	Marionette	INFO	Listening on port 65369
+1625491420263	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://cdn.suitsupply.com/apps/webstore/208392-T14jzdb5x1/js/main.js, line 1: ChunkLoadError: Loading chunk 53 failed.
+(error: https://cdn.suitsupply.com/apps/webstore/208392-T14jzdb5x1/vendors~slick-carousel.chunk.js)
+JavaScript error: https://cdn.suitsupply.com/apps/webstore/208392-T14jzdb5x1/js/main.js, line 1: ChunkLoadError: Loading chunk 45 failed.
+(error: https://cdn.suitsupply.com/apps/webstore/208392-T14jzdb5x1/overlaySidebar.chunk.js)
+console.log: WebExtensions: reset-default-search: starting.
+console.log: WebExtensions: reset-default-search: No addons in our list are installed.
+1625492180250	geckodriver	INFO	Listening on 127.0.0.1:51641
+1625492183318	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\jpaul\\AppData\\Local\\Temp\\rust_mozprofileUFsgzj"
+*** You are running in headless mode.
+1625492183676	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\jpaul\\AppData\\Local\\Temp\\rust_mozprofileUFsgzj\\search.json.mozlz4", (void 0)))
+1625492184694	Marionette	INFO	Listening on port 51649
+1625492184878	Marionette	WARN	TLS certificate errors will be ignored for this session
