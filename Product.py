@@ -8,7 +8,8 @@ class Product:
         self.old_price = old_price
 
     def print_information(self):
-        print(f"Color: {self.color}\n" +
+        print(f"Identity: {self.identity}\n" +
+              f"Color: {self.color}\n" +
               f"Type: {self.type}\n" +
               f"Material: {self.material}\n" +
               f"New Price: {self.new_price}\n" +

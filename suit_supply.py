@@ -12,6 +12,9 @@ import argparse
 from apscheduler.schedulers.blocking import BlockingScheduler
 from webdrivermanager import GeckoDriverManager
 
+import numpy as np
+import pandas as pd
+
 sched = BlockingScheduler()
 options = Options()
 options.binary_location = r'C:\Program Files\Mozilla Firefox\firefox.exe'
@@ -125,21 +128,24 @@ def find_suit_deals(filter, color, size, event, IFTTT_key):
     get_suits_page(driver, size, color)                 # 
     scroll_to_end(driver)                               # Comment these lines if you want to see all matches at first run, not just check for new matches while running. 
     item_in_stock = list(in_stock(driver, filter))      #
+    product_count = len(item_in_stock)                  #
     while True:
-        product_count = len(item_in_stock)
         get_suits_page(driver, size, color)
         scroll_to_end(driver)
-        item_in_stock = list(in_stock(driver, filter))
-        current_product_count = len(item_in_stock)
-        if current_product_count > product_count:
-            print("Found a new item!")
-            for product in item_in_stock:
-                print(product.identity)
-                notify_through_ITT(product.identity, IFTTT_key, event, )
-        print(item_in_stock)
-        notify_through_ITT(current_product_count, IFTTT_key, event)
+        new_item_in_stock = list(in_stock(driver, filter))
+        new_product_count = len(new_item_in_stock)
+        if new_product_count > product_count:
+            print("Found new item(s)!")
+            for product in new_item_in_stock:
+                if product not in item_in_stock:  #if true, must be a new item!
+                    print(" -- New Item --")
+                    print(product.identity)
+                    notify_through_ITT(product.identity, IFTTT_key, event )
+        product_count = new_product_count #update the product count to the new count
+        item_in_stock = new_item_in_stock #update the list of items in currently in stock 
+        notify_through_ITT(product_count, IFTTT_key, "product_list_updated_fast") #send fast updates of current product count so it's easy to check if script is running
         print("Searching...")
-        time.sleep(60) #wait one minute
+        time.sleep(300) #wait five minutes
 
 
 def parse_args():
