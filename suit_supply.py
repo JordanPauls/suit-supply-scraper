@@ -20,14 +20,21 @@ driver = webdriver.Firefox(options=options, executable_path="geckodriver.exe")
 
 
 def get_suits_page(web_driver: selenium.webdriver, size, color):
-    web_driver.get("https://suitsupply.com/en-us/men/suits")
+    # web_driver.get("https://suitsupply.com/en-us/men/suits")
     #form = web_driver.find_element_by_id("dwfrm_clearancelanding_code")
     #form.send_keys("2020")
     #button = web_driver.find_element_by_id("sendBtn")
     #button.click()
-    web_driver.get(
-        #f"https://outlet-us.suitsupply.com/en_US/c_suits?prefn1=colorID&prefv1={color}&prefn2=size&prefv2={size}")
-        f"https://suitsupply.com/en-us/men/suits?prefn1=colorID&prefv1={color}&prefn2=size&prefv2={size}")
+    Page_Connect = False
+    while Page_Connect is False: #this loop makes the script resilient to wifi outages
+        try:
+            Page_Connect = web_driver.get(
+            #f"https://outlet-us.suitsupply.com/en_US/c_suits?prefn1=colorID&prefv1={color}&prefn2=size&prefv2={size}")
+            f"https://suitsupply.com/en-us/men/suits?prefn1=colorID&prefv1={color}&prefn2=size&prefv2={size}") #for outlet sale
+            Page_Connect = True #should only execute if Page Connects successfully 
+        except: 
+            time.sleep(10)
+            print("Page Connect failed. Trying again in 10 seconds...")
     print(f"https://suitsupply.com/en-us/men/suits?prefn1=colorID&prefv1={color}&prefn2=size&prefv2={size}")
 
 

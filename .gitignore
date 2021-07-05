@@ -1,2 +1,4 @@
 # Project exclude paths
 /venv/
+geckodriver.log
+__pycache__/Product.cpython-39.pyc
